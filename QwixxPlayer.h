@@ -5,7 +5,7 @@
 class QwixxPlayer :Player {
 
 	QwixxScoreSheet q;
-	virtual void inputBeforeRoll();
-	virtual void inputAfterRoll();
+	 void inputBeforeRoll();
+	 void inputAfterRoll();
 
-};
+};	
