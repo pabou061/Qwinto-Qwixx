@@ -19,15 +19,18 @@ private:
 
 
 class Dice{
+private:
+	int face;
 public:
 	const Colour c;
-	int face;
 	int roll();
 
 	RandomDice rdice;
 
 	inline Dice(Colour colour):c(colour) {};
 	inline friend std::ostream& operator<<(std::ostream& out, Dice const& obj) { return out << obj.face; }
+	inline int getFace() { return face; }
+	
 
 };
 
