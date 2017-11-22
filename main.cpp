@@ -1,22 +1,30 @@
 #include "Dice.h"
 #include "RollOfDice.h"
 #include <iostream>
+#include "QwintoRow.h"
 int main() {
 	Colour b = RED;
 	Dice c(b);
 	Dice d(b);
-	std::vector<Dice>dV = { c,d };
+	Dice e(b);
+	QwintoRow<RED> qrr;
+	
+	
+	std::vector<Dice>dV = { c,d,e };
+	std::vector<Dice>dE = { c,c,c,c,c,c,c,c,c,c,c,c,c };
 
 	RollOfDice z(dV);
+	RollOfDice z1(dE);
+	z1.roll();
 	z.roll();
 	std::cout << z;
 	int awignahan = z;
 	std::cout << awignahan;
-	for (int i = 0; i < 500; i++) {
-		z.roll();
-		std::cout << z;
-	}
-
-
+	std::cout << qrr.validate(z,0) << std::endl;
+	std::cout << qrr.validate(z,10) << std::endl;
+	qrr[0] = z;
+	std::cout << qrr.validate(z,0) << std::endl;
+	std::cout << qrr.validate(z1,1) << std::endl;
+	
 	return 0;
 }
