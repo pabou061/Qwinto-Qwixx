@@ -1,8 +1,8 @@
 #include "QwintoRow.h"
 #include "Colour.h"
 #include "RollOfDice.h"
+#include <ostream>
 #define macro = return true;
-
 bool QwintoRow<RED>::validate(RollOfDice rd, int pos) {
 	if (pos < 0) { return false; }
 	if (pos > 12) { return false; }
@@ -13,7 +13,7 @@ bool QwintoRow<RED>::validate(RollOfDice rd, int pos) {
 	}
 	return rScore[pos - 1] < rd && rScore[pos] == 0;
 }
-bool QwintoRow<GREEN>::validate(RollOfDice rd, int pos) {
+bool QwintoRow<YELLOW>::validate(RollOfDice rd, int pos) {
 	if (pos < 0) { return false; }
 	if (pos > 12) { return false; }
 	for (int i = 0; i < pos; i++) {
@@ -23,7 +23,7 @@ bool QwintoRow<GREEN>::validate(RollOfDice rd, int pos) {
 	}
 	return rScore[pos - 1] < rd && rScore[pos] == 0;
 }
-bool QwintoRow<YELLOW>::validate(RollOfDice rd,int pos) {
+bool QwintoRow<BLUE>::validate(RollOfDice rd, int pos) {
 	if (pos < 0) { return false; }
 	if (pos > 12) { return false; }
 	for (int i = 0; i < pos; i++) {
@@ -33,13 +33,103 @@ bool QwintoRow<YELLOW>::validate(RollOfDice rd,int pos) {
 	}
 	return rScore[pos - 1] < rd && rScore[pos] == 0;
 }
-bool QwintoRow<BLUE>::validate(RollOfDice rd,int pos) {
-	if (pos < 0) { return false; }
-	if (pos > 12) { return false; }
-	for (int i = 0; i < pos; i++) {
-		if (rScore[i] <= 0) {
-			return false;
+
+std::ostream& operator<<(std::ostream& out, QwintoRow<RED> qRow)
+	{
+			out << "Red" << "             ";
+			for (int i = 0; i < 11; i++) {
+				switch (i) {
+				case 0:
+					out << "|";
+					break;
+				case 1:
+					out << "%";
+					break;
+				case 2:
+					out << "%";
+					break;
+				case 3:
+					out << "|XX";
+					break;
+				case 5:
+					out << "%";
+					break;
+				case 6:
+					out << "%";
+					break;
+				default:
+					out << "|";
+					break;
+				}
+				if (i != 3 && i != 10) {
+					if (qRow.rScore[i] > 9) { out << qRow.rScore[i]; }
+					else if (qRow.rScore[i] < 10 && qRow.rScore[i] != 0) { out << " " << qRow.rScore[i]; }
+					else { out << "  "; }
+				}
+			}
+			out << std::endl;
+			return out;
+	}
+
+std::ostream & operator<<(std::ostream & out, QwintoRow<BLUE> qRow)
+{
+	out << "Blue" << "      ";
+	for (int i = 0; i < 11; i++) {
+		switch (i) {
+		case 4:
+			out << "|XX";
+			break;
+		case 2:
+			out << "%";
+			break;
+		case 3:
+			out << "%";
+			break;
+		case 9:
+			out << "%";
+			break;
+		case 10:
+			out << "%";
+			break;
+		default:
+			out << "|";
+			break;
+		}
+		if (i != 4 && i != 10) {
+			if (qRow.rScore[i] > 9) { out << qRow.rScore[i]; }
+			else if (qRow.rScore[i] < 10 && qRow.rScore[i] != 0) { out << " " << qRow.rScore[i]; }
+			else { out << "  "; }
 		}
 	}
-	return rScore[pos - 1] < rd && rScore[pos] == 0;
+	out << std::endl;
+	return out;
 }
+
+std::ostream & operator<<(std::ostream & out, QwintoRow<YELLOW> qRow)
+{
+	out << "Yellow" << "       ";
+	for (int i = 0; i < 11; i++) {
+		switch (i) {
+		case 5:
+			out << "|XX";
+			break;
+		case 7:
+			out << "%";
+			break;
+		case 8:
+			out << "%";
+			break;
+		default:
+			out << "|";
+			break;
+		}
+		if (i != 5 && i != 10) {
+			if (qRow.rScore[i] > 9) { out << qRow.rScore[i]; }
+			else if (qRow.rScore[i] < 10 && qRow.rScore[i] != 0) { out << " " << qRow.rScore[i]; }
+			else { out << "  "; }
+		}
+	}
+	out << std::endl;
+	return out;
+}
+

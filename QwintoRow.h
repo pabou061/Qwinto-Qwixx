@@ -1,6 +1,7 @@
 #pragma once
 #include "Colour.h"
 #include "RollOfDice.h"
+#include <ostream>
 
 template <Colour C> class QwintoRow {
 public:
@@ -10,6 +11,7 @@ public:
 	}
 	inline QwintoRow() { for (int i = 0; i < 12; i++){rScore[i] = 0; } };
 	bool validate(RollOfDice rd, int pos);
+	friend std::ostream& operator<<(std::ostream& out, QwintoRow<C> qRow);
 };
 
 
