@@ -79,6 +79,10 @@ int QwintoScoreSheet::calcTotal()
 	return total;
 }
 
+
+void QwintoScoreSheet::setTotal() {
+	currScore= calcTotal();
+}
 bool const QwintoScoreSheet::operator!()
 {
 
@@ -111,6 +115,10 @@ bool const QwintoScoreSheet::operator!()
 		}
 	}
 	return false;
+}
+
+QwintoScoreSheet::~QwintoScoreSheet()
+{
 }
 
 bool QwintoScoreSheet::validate(RollOfDice rd, Colour selectedC, int positionL) {
@@ -155,3 +163,18 @@ bool QwintoScoreSheet::validate(RollOfDice rd, Colour selectedC, int positionL) 
 	}
 	return true;
 }
+
+
+ std::ostream & operator<<(std::ostream & out, QwintoScoreSheet s)
+ {
+	 out << "Player name: " << s.playername << "\t Points: " << s.currScore << std::endl;
+	 out << "\t\t ------------------------------" << std::endl;
+	 out << s.r;
+	 out << "\t ------------------------------" << std::endl;
+	 out << s.y;
+	 out << "\t ------------------------------" << std::endl;
+	 out << s.b;
+	 out << "\t ------------------------------" << std::endl;
+	 out << "Failed throws: " << s.failedAttempts << std::endl;
+	 return out;
+ }

@@ -16,7 +16,7 @@ public:
 	int calcTotal();
 	void setTotal();
 	bool virtual const operator!();
-	 friend std::ostream& operator<<(std::ostream& out, QwintoScoreSheet s);
+	friend std::ostream& operator<<(std::ostream& out, QwintoScoreSheet s);
 
 	~QwintoScoreSheet();
 protected:
