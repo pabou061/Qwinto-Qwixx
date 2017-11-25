@@ -27,13 +27,17 @@ void QwixxRow<T, colour>::print(std::ostream & out) const
 	else if (colour == BLUE) { out << "Blue    "; }
 	else if (colour == YELLOW) { out << "Yellow  "; }
 	else { out << "Green    "; }
-
+	int i = 2;
 	for (int b : rScore) {
 		out << "|";	
-				if (b > 9) { out << b; }
-				else if (b < 10 && b != 0) { out << " " << b; }
-				else { out << "  "; }
+				if (b > 0) { out << "XX"; }
+				else{
+					if (i < 10) { out << " " << i; }
+					else { out << i; }
+				}
+				i++;
 	}
+	out << "|";
 
 
 }
