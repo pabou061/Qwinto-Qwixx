@@ -10,16 +10,17 @@ public:
 	int failedAttempts, currScore;
 
 	ScoreSheet();
-	bool score(RollOfDice, Colour selectedC, int positionL = -1);
-	//int virtual calcTotal();
+	ScoreSheet(std::string name);
+	bool score(RollOfDice rd, Colour selectedC, int positionL = -1);
+	int virtual calcTotal();
 	void setTotal();
-	//virtual bool const operator!();
+	virtual bool const operator!();
 	friend std::ostream& operator<<(std::ostream& out, ScoreSheet s);
 
 
 
 	~ScoreSheet();
 protected:
-	void validate();
+	bool virtual validate(RollOfDice rd, Colour selectedC, int positionL = -1));
 };
 
