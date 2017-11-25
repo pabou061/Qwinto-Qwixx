@@ -63,7 +63,7 @@ bool QwixxScoreSheet::validate(RollOfDice rd, Colour selectedC, int positionL)
 {
 
 	for (Dice d : rd) {
-		if (d.c != selectedC || d.c!= WHITE)
+		if (d.c != selectedC || d.c != WHITE)
 			return false;
 	}
 
@@ -85,4 +85,28 @@ bool QwixxScoreSheet::validate(RollOfDice rd, Colour selectedC, int positionL)
 		return false;
 	}
 	return true;
+}
+
+std::ostream & operator<<(std::ostream & out, QwixxScoreSheet s)
+{
+	out << "Player name: " << s.playername << "\t Points: " << s.currScore << std::endl;
+	out << "\t ------------------------------" << std::endl;
+	out << s.r;
+	char c = s.isLocked[0] ? 'L' : 'U';
+	out << c << std::endl;
+	out << "\t ------------------------------" << std::endl;
+	out << s.y;
+	c = s.isLocked[1] ? 'L' : 'U';
+	out << c << std::endl;
+	out << "\t ------------------------------" << std::endl;
+	out << s.g;
+	c = s.isLocked[2] ? 'L' : 'U';
+	out << c << std::endl;
+	out << "\t ------------------------------" << std::endl;
+	out << s.b;
+	c = s.isLocked[3] ? 'L' : 'U';
+	out << c << std::endl;
+	out << "\t ------------------------------" << std::endl;
+	out << "Failed throws: " << s.failedAttempts << std::endl;
+	return out;
 }

@@ -18,7 +18,7 @@ class QwixxScoreSheet : ScoreSheet {
 	int virtual calcTotal() ;
 	void setTotal();
 	bool const operator!();
-	//friend std::ostream& operator<<(std::ostream& out, ScoreSheet s);
+	friend std::ostream& operator<<(std::ostream& out, QwixxScoreSheet s);
 
 	~QwixxScoreSheet();
 protected:
