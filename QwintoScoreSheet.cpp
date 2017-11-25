@@ -120,13 +120,40 @@ bool QwintoScoreSheet::validate(RollOfDice rd, Colour selectedC, int positionL) 
 		if (d.c != selectedC)
 			return false;
 	}
+
+	if (true)
+	{
+
+	}
 	switch (selectedC)
 	{
 	case RED:
+		if (positionL == 8 && y[9] == rd)
+		{
+			return false;
+		}
+		else if (positionL < 8 && (y[positionL - 1] == rd || b[positionL - 2] == rd)) {
+			return false;
+		}
 		return r.validate(rd, positionL);
 	case YELLOW:
+		if ((positionL == 9 && r[8] == rd) || (positionL == 0 && b[1] == rd))
+		{
+			return false;
+		}
+		else if (positionL < 9 && (r[positionL - 1] == rd || b[positionL + 1] == rd)) {
+			return false;
+		}
 		return	y.validate(rd, positionL);
 	case BLUE:
+		if (positionL == 1 && y[0] == rd)
+		{
+			return false;
+		}
+		else if (positionL > 1 && (y[positionL + 1] == rd || r[positionL + 2] == rd)) {
+			return false;
+		}
+
 		return b.validate(rd, positionL);
 	default:
 		return false;
