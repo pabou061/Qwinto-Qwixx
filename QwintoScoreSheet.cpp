@@ -120,11 +120,6 @@ bool QwintoScoreSheet::validate(RollOfDice rd, Colour selectedC, int positionL) 
 		if (d.c != selectedC)
 			return false;
 	}
-
-	if (true)
-	{
-
-	}
 	switch (selectedC)
 	{
 	case RED:
