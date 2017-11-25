@@ -23,7 +23,13 @@ int main() {
 	z1.roll();
 	z.roll();
 	qxx += z;
-	qxx += z;
+	try {
+		qxx += z;
+
+	}
+	catch (...) {
+		std::cout << "farts";
+	}
 	std::cout << qxx;
 	return 0;
 }

@@ -50,7 +50,7 @@ QwixxRow<T,colour> QwixxRow<T, colour>::operator+=(RollOfDice rd)
 	for (Dice d : rd) {
 		if (d.c != colour && d.c != WHITE) {
 			throw "Not White of the color of the Row";
-			return *this;
+			
 		}
 		counter++;
 	}
@@ -63,7 +63,7 @@ QwixxRow<T,colour> QwixxRow<T, colour>::operator+=(RollOfDice rd)
 		if (vd > counter) {}
 		else if(i != 0) {
 			throw "There are scores at the right of where you want to put your score";
-			return *this;
+			
 		}
 		counter++;
 	}
@@ -72,7 +72,7 @@ QwixxRow<T,colour> QwixxRow<T, colour>::operator+=(RollOfDice rd)
 		if (vd == counter) {
 			if (i != 0) {
 				throw "There is a score where you are trying to put your score";
-				return *this;
+				
 			}
 			else {
 				i = vd;
