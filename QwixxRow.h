@@ -59,13 +59,27 @@ QwixxRow<T,colour> QwixxRow<T, colour>::operator+=(RollOfDice rd)
 	}
 	int vd = rd;
 	counter = 0;
-	for (int  i : rScore) {
-		if (vd > counter) {}
-		else if(i != 0) {
-			throw "There are scores at the right of where you want to put your score";
-			
+	if (colour == RED || colour == YELLOW) {
+		for (int i : rScore) {
+
+			if (vd > counter) {}
+			else if (i != 0) {
+				throw "There are scores at the right of where you want to put your score";
+
+			}
+			counter++;
 		}
-		counter++;
+	}
+	else {
+		for (int i : rScore) {
+
+			if (vd < counter) {}
+			else if (i != 0) {
+				throw "There are scores at the right of where you want to put your score";
+
+			}
+			counter++;
+		}
 	}
 	counter = 0;
 	for (int & i : rScore) {
