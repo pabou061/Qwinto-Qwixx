@@ -1,6 +1,7 @@
 #pragma once
 
 #include "ScoreSheet.h"
+#include <string>
 #include "QwintoRow.h"
 class QwintoScoreSheet : ScoreSheet {
 
@@ -8,11 +9,9 @@ public:
 	QwintoRow <RED> r;
 	QwintoRow <BLUE> b;
 	QwintoRow <YELLOW> y;
+	
+	QwintoScoreSheet(std::string name);
 
-
-	QwintoScoreSheet();
-
-	bool score(RollOfDice, Colour selectedC, int positionL = -1);
 	int calcTotal();
 	void setTotal();
 	bool const operator!();
@@ -20,6 +19,6 @@ public:
 
 	~QwintoScoreSheet();
 protected:
-	void validate();
+	bool validate(RollOfDice rd, Colour selectedC, int positionL = -1);
 
 };
