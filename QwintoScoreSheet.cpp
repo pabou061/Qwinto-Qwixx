@@ -13,7 +13,70 @@ QwintoScoreSheet::QwintoScoreSheet(std::string name) {
 
 int QwintoScoreSheet::calcTotal()
 {
-	return 0;
+	int total = 0;
+	int counter = 0;
+
+
+	total -= failedAttempts * 5;
+
+	for (size_t i = 0; i < 10; i++)
+	{
+		if (r[i] > 0 && i != 3)
+		{
+			counter++;
+
+		}
+	}
+	counter == 9 ? total += r[9] : total += counter;
+	counter = 0;
+
+	for (size_t i = 0; i < 10; i++)
+	{
+		if (y[i] > 0 && i != 5)
+		{
+			counter++;
+
+		}
+	}
+	counter == 9 ? total += y[9] : total += counter;
+	counter = 0;
+	for (size_t i = 0; i < 10; i++)
+	{
+		if (b[i] > 0 && i != 4)
+		{
+			counter++;
+		}
+	}
+	counter == 9 ? total += b[9] : total += counter;
+	counter = 0;
+
+	for (size_t i = 2; i < 10; i++)
+	{
+		if (b[i] > 0 && y[i - 1] > 0 && r[i - 2] > 0) {
+			switch (i)
+			{
+			case 2:
+				total += b[i];
+				break;
+			case 3:
+				total += r[i - 2];
+				break;
+			case 7:
+				total += r[i - 2];
+				break;
+			case 8:
+				total += y[i - 1];
+				break;
+			case 9:
+				total += b[i];
+				break;
+			default:
+				break;
+			}
+		}
+	}
+
+	return total;
 }
 
 bool const QwintoScoreSheet::operator!()
@@ -31,7 +94,6 @@ bool const QwintoScoreSheet::operator!()
 			break;
 		}
 	}
-
 	for (size_t i = 0; i < 10; i++)
 	{
 		if (y[i] == 0 && i != 5)
@@ -48,7 +110,6 @@ bool const QwintoScoreSheet::operator!()
 			break;
 		}
 	}
-
 	return false;
 }
 
