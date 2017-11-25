@@ -19,7 +19,21 @@ QwixxScoreSheet::QwixxScoreSheet(std::string name) {
 
 int QwixxScoreSheet::calcTotal()
 {
-	return 0;
+	int total = 0;
+	total -= failedAttempts * 5;
+
+	for (size_t i = 0; i < 12; i++)
+	{
+		total += r.rScore[i] + y.rScore[i];
+	}
+
+	for (int i : b.rScore) {
+		total += i;
+	}
+	for (int i : g.rScore) {
+		total += i;
+	}
+	return total;
 }
 
 void QwixxScoreSheet::setTotal()
