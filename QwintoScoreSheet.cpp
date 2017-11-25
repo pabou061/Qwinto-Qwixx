@@ -2,7 +2,7 @@
 #include <string>
 
 QwintoScoreSheet::QwintoScoreSheet(std::string name) {
-	QwintoRow<RED> r();
+	QwintoRow <RED> r();
 	QwintoRow <BLUE> b();
 	QwintoRow <YELLOW> y();
 	playername = name;
@@ -11,16 +11,18 @@ QwintoScoreSheet::QwintoScoreSheet(std::string name) {
 
 }
 
-int calcTotal();
-void setTotal();
-bool const operator!();
-friend std::ostream& operator<<(std::ostream& out, ScoreSheet s);
+int QwintoScoreSheet::calcTotal()
+{
+	return 0;
+}
 
-~QwintoScoreSheet();
+bool const QwintoScoreSheet::operator!()
+{
+	return nullptr;
+}
 
-bool validate(RollOfDice rd, Colour selectedC, int positionL = -1){
-	if (positionL == -1)
-		return false;
+bool QwintoScoreSheet::validate(RollOfDice rd, Colour selectedC, int positionL) {
+
 
 	for (Dice d : rd) {
 		if (d.c != selectedC)
@@ -29,17 +31,14 @@ bool validate(RollOfDice rd, Colour selectedC, int positionL = -1){
 	switch (selectedC)
 	{
 	case RED:
-		if (positionL == 3) 
-			return false; 
-		else 
-			return r.validate(rd, positionL);
+		return r.validate(rd, positionL);
 	case YELLOW:
-		break;
+		return	y.validate(rd, positionL);
+
 	case BLUE:
-		break;
+		return b.validate(rd, positionL);
 	default:
 		return false;
 	}
-
 	return true;
 }

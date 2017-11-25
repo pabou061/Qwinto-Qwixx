@@ -2,7 +2,7 @@
 #include "Colour.h"
 #include "RollOfDice.h"
 #include <ostream>
-#define macro = return true;
+
 bool QwintoRow<RED>::validate(RollOfDice rd, int pos) {
 	if (pos < 0) { return false; }
 	if (pos > 12) { return false; }

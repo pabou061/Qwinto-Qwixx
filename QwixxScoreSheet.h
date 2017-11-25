@@ -3,6 +3,7 @@
 #include "ScoreSheet.h"
 #include "QwixxRow.h"
 #include <string>
+#include <list>
 
 class QwixxScoreSheet : ScoreSheet {
 
