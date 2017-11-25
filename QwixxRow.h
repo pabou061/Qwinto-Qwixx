@@ -1,13 +1,14 @@
 #pragma once
 #include "Colour.h"
 #include <ostream>
+#include "RollOfDice.h"
 template<class T,const  Colour colour> class QwixxRow {
 	public:
 		T rScore;
 		
 
 		void print(std::ostream & output) const;
-
+		QwixxRow<T,colour> operator+=(RollOfDice rd);
 		QwixxRow();
 };
 
@@ -40,4 +41,42 @@ void QwixxRow<T, colour>::print(std::ostream & out) const
 	out << "|";
 
 
+}
+
+template<class T, Colour colour>
+QwixxRow<T,colour> QwixxRow<T, colour>::operator+=(RollOfDice rd)
+{
+	int counter = 0;
+	for (Dice d : rd) {
+		if (d.c != colour && d.c != WHITE) {
+			return *this;
+		}
+		counter++;
+	}
+	if (counter != 2) {
+		return *this;
+	}
+	int vd = rd;
+	counter = 0;
+	for (int  i : rScore) {
+		if (vd > counter) {}
+		else if(i != 0) {
+			return *this;
+		}
+		counter++;
+	}
+	counter = 0;
+	for (int & i : rScore) {
+		if (vd == counter) {
+			if (i != 0) {
+				return *this;
+			}
+			else {
+				i = vd;
+				return *this;
+			}
+		}
+		counter++;
+	}
+	return *this;
 }
