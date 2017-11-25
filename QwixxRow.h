@@ -55,7 +55,7 @@ QwixxRow<T,colour> QwixxRow<T, colour>::operator+=(RollOfDice rd)
 		counter++;
 	}
 	if (counter != 2) {
-		return *this;
+		throw "Your roll does not have 2 dice";
 	}
 	int vd = rd;
 	counter = 0;
