@@ -18,7 +18,38 @@ int QwintoScoreSheet::calcTotal()
 
 bool const QwintoScoreSheet::operator!()
 {
-	return nullptr;
+
+	if (failedAttempts == 4) {
+		return true;
+	}
+	int counter = 0;
+	for (size_t i = 0; i < 10; i++)
+	{
+		if (r[i] == 0 && i != 3)
+		{
+			counter++;
+			break;
+		}
+	}
+
+	for (size_t i = 0; i < 10; i++)
+	{
+		if (y[i] == 0 && i != 5)
+		{
+			counter++;
+			break;
+		}
+	}
+	for (size_t i = 0; i < 10; i++)
+	{
+		if (b[i] == 0 && i != 4)
+		{
+			counter++;
+			break;
+		}
+	}
+
+	return false;
 }
 
 bool QwintoScoreSheet::validate(RollOfDice rd, Colour selectedC, int positionL) {
@@ -34,7 +65,6 @@ bool QwintoScoreSheet::validate(RollOfDice rd, Colour selectedC, int positionL) 
 		return r.validate(rd, positionL);
 	case YELLOW:
 		return	y.validate(rd, positionL);
-
 	case BLUE:
 		return b.validate(rd, positionL);
 	default:

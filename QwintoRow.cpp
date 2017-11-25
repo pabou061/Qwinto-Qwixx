@@ -5,7 +5,7 @@
 
 bool QwintoRow<RED>::validate(RollOfDice rd, int pos) {
 	if (pos < 0) { return false; }
-	if (pos > 12) { return false; }
+	if (pos > 10) { return false; }
 	if (pos == 3) return false;
 	for (int i = 0; i < pos; i++) {
 		if (i != 3) {
@@ -18,7 +18,7 @@ bool QwintoRow<RED>::validate(RollOfDice rd, int pos) {
 }
 bool QwintoRow<YELLOW>::validate(RollOfDice rd, int pos) {
 	if (pos < 0) { return false; }
-	if (pos > 12) { return false; }
+	if (pos > 10) { return false; }
 	if (pos == 5) { return false; }
 	for (int i = 0; i < pos; i++) {
 		if (i != 5) {
@@ -31,7 +31,7 @@ bool QwintoRow<YELLOW>::validate(RollOfDice rd, int pos) {
 }
 bool QwintoRow<BLUE>::validate(RollOfDice rd, int pos) {
 	if (pos < 0) { return false; }
-	if (pos > 12) { return false; }
+	if (pos > 10) { return false; }
 	if (pos == 4) { return false; }
 	for (int i = 0; i < pos; i++) {
 		if (i != 4) {
