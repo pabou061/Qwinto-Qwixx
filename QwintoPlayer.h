@@ -2,10 +2,11 @@
 #include "Player.h"
 #include "QwintoScoreSheet.h"
 
-class QwintoPlayer :Player {
+class QwintoPlayer : Player {
 
 	QwintoScoreSheet q;
-	 void inputBeforeRoll();
-	 void inputAfterRoll();
 
+	QwintoPlayer(std::string _name, QwintoScoreSheet _scoreSheet) : Player(_name), q(_scoreSheet) {};
+	void inputBeforeRoll(RollOfDice &_rollOfDice);
+	void inputAfterRoll(RollOfDice &_rollOfDice);
 };

@@ -4,7 +4,7 @@
 #include <string>
 #include "QwintoRow.h"
 
-class QwintoScoreSheet : ScoreSheet {
+class QwintoScoreSheet :public ScoreSheet {
 
 public:
 	QwintoRow <RED> r;
