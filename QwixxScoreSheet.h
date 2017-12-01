@@ -5,8 +5,8 @@
 #include <string>
 #include <list>
 
-class QwixxScoreSheet : ScoreSheet {
-
+class QwixxScoreSheet :public  ScoreSheet {
+public:
 	QwixxRow <std::vector<int>, RED> r;
 	QwixxRow <std::list<int>, BLUE> b;
 	QwixxRow <std::vector<int>, YELLOW> y;
@@ -15,7 +15,7 @@ class QwixxScoreSheet : ScoreSheet {
 
 	QwixxScoreSheet(std::string name);
 
-	int virtual calcTotal() ;
+	int virtual calcTotal();
 	void setTotal();
 	bool const operator!();
 	friend std::ostream& operator<<(std::ostream& out, QwixxScoreSheet s);

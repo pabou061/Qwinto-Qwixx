@@ -30,6 +30,7 @@ public:
 	inline Dice(Colour colour):c(colour) {};
 	inline friend std::ostream& operator<<(std::ostream& out, Dice const& obj) { return out << obj.face; }
 	inline int getFace() { return face; }
+	//inline friend bool operator==(Dice d6, Dice d) { return d6.c == d.c && d6.getFace() == d.getFace(); }
 	
 
 };

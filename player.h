@@ -1,6 +1,10 @@
 
+#ifndef PLAYER_HEADER
+#define PLAYER_HEADER
 #include "RollOfDice.h"
 #include <string>
+
+
 
 class Player {
 public:
@@ -8,7 +12,9 @@ public:
 	bool isPlaying;
 	Player() {};
 	Player(std::string _name) { name = _name; };
-	virtual void inputBeforeRoll(RollOfDice &_rollOfDice);
-	virtual void inputAfterRoll(RollOfDice &_rollOfDice);
+	virtual void inputBeforeRoll(RollOfDice &_rollOfDice) = 0;
+	virtual void inputAfterRoll(RollOfDice &_rollOfDice) = 0;
 	
 };
+
+#endif

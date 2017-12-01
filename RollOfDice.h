@@ -22,11 +22,11 @@ public:
 	inline std::vector<Dice>::const_iterator end() const {
 		return d.end();
 	}
-	/*inline void addDice(Dice d6) {
-		d.push_back(d6);
-	}
-	inline void removeDice(Dice d6) {
-		d.erase(std::remove(d.begin(), d.end(), d6), d.end()); //TODO : rework this or scrap it.
-	}
-	*/
+	//inline void addDice(Dice d6) {
+		//d.push_back(d6);
+	//}
+	//inline void removeDice(Dice d6) {
+		//d.erase(std::remove(d.begin(), d.end(), d6), d.end()); //TODO : rework this or scrap it.
+	//}
+	
 };
