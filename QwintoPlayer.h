@@ -2,8 +2,8 @@
 #include "Player.h"
 #include "QwintoScoreSheet.h"
 
-class QwintoPlayer : Player {
-
+class QwintoPlayer : public Player {
+public:
 	QwintoScoreSheet q;
 
 	QwintoPlayer(std::string _name, QwintoScoreSheet _scoreSheet) : Player(_name), q(_scoreSheet) {};

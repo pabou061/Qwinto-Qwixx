@@ -6,6 +6,7 @@ class RollOfDice {
 public:
 	std::vector<Dice> d;
 	RollOfDice(std::vector<Dice> vD);
+	RollOfDice() {};
 	void roll();
 	operator int() const;
 	RollOfDice pair(Dice d1, Dice d2);

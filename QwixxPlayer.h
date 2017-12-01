@@ -2,8 +2,8 @@
 #include "Player.h"
 #include "QwixxScoreSheet.h"
 
-class QwixxPlayer : Player {
-
+class QwixxPlayer : public Player {
+public:
 	QwixxScoreSheet q;
 	
 	QwixxPlayer(std::string _name, QwixxScoreSheet _scoreSheet) : Player(_name), q(_scoreSheet) {};
