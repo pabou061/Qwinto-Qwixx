@@ -107,13 +107,13 @@ void QwintoPlayer::inputAfterRoll(RollOfDice &_rollOfDice) {
 		else if (input == "yellow")
 		{
 			if (q.score(_rollOfDice, YELLOW, number)) {
-				q.r[number] = _rollOfDice;
+				q.y[number] = _rollOfDice;
 				isDone = true;
 			}
 		}
 		else if (input == "blue") {
 			if (q.score(_rollOfDice, BLUE, number)) {
-				q.r[number] = _rollOfDice;
+				q.b[number] = _rollOfDice;
 				isDone = true;
 			}
 		}
