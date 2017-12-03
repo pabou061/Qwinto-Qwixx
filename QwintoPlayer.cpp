@@ -13,9 +13,9 @@ void QwintoPlayer::inputBeforeRoll(RollOfDice &_rollOfDice) {
 	bool hasYellow = false;
 	std::locale loc;
 
-	std::cout << "Selectionnez le(s) dé(s) que vous voulez rouler, tapez \"done\" a la fin: " << std::endl;
+	std::cout << "Select the die or the dice that you desire to roll and type \"done\" at the end: " << std::endl;
 
-	while (input != "done") {
+	while (input != "done" || SelectedColors.size() == 0) {
 		std::cin >> input;
 
 		std::transform(input.begin(), input.end(), input.begin(), ::tolower);
@@ -34,9 +34,12 @@ void QwintoPlayer::inputBeforeRoll(RollOfDice &_rollOfDice) {
 			SelectedColors.push_back(Dice(Colour(YELLOW)));
 			hasYellow = true;
 		}
-		else {
+		else if (input != "done") {
 			std::cout << "input invalid" << std::endl;
 
+		}
+		else if (SelectedColors.size() == 0) {
+			std::cout << "input invalid" << std::endl;
 		}
 	}
 	_rollOfDice = RollOfDice(SelectedColors);
@@ -54,14 +57,14 @@ void QwintoPlayer::inputAfterRoll(RollOfDice &_rollOfDice) {
 
 
 	while (!isDone) {
-		std::cout << "Please select the row color where you would like to place your score";
+		std::cout << "Please select the row color where you would like to place your score" << std::endl;
 
 		if (!isPlaying) {
-			std::cout << "NOTE: You can type \"pass\" to skip with no penalty ";
+			std::cout << "NOTE: You can type \"pass\" to skip with no penalty "<< std::endl;
 
 		}
 		if (isPlaying) {
-			std::cout << "NOTE: You can type \"fail\" to mark a failed throw ";
+			std::cout << "NOTE: You can type \"fail\" to mark a failed throw " << std::endl;
 		}
 
 
@@ -117,7 +120,7 @@ void QwintoPlayer::inputAfterRoll(RollOfDice &_rollOfDice) {
 				isDone = true;
 			}
 		}
-		else {
+		if(!isDone) {
 			std::cout << "invalid input" << std::endl;
 		}
 
