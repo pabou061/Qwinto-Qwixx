@@ -75,10 +75,10 @@ int main() {
 			currentPlayer = turn % nbPlayers;
 			QwixxPlayer &cp = xPlayer.at(currentPlayer);
 			cp.isPlaying = true;
+			std::cout << cp.q;
 			cp.inputBeforeRoll(rd);
 			rd.roll();
 			std::cout << rd;
-			std::cout << cp.q;
 			cp.inputAfterRoll(rd);
 			cp.q.setTotal();
 			std::cout << cp.q;
