@@ -133,18 +133,21 @@ int main() {
 			currentPlayer = turn % nbPlayers;
 			QwintoPlayer &cp = oPlayer.at(currentPlayer);
 			cp.isPlaying = true;
+			std::cout << cp.q;
 			cp.inputBeforeRoll(rd);
 			rd.roll();
 			std::cout << rd;
 			std::cout << cp.q;
 			cp.inputAfterRoll(rd);
 			cp.q.setTotal();
+			std::cout << cp.q;
 			for (size_t i = 0; i < nbPlayers; i++)
 			{
 				if (currentPlayer != i) {
 					std::cout << oPlayer.at(i).q;
 					oPlayer.at(i).inputAfterRoll(rd);
 					oPlayer.at(i).q.setTotal();
+					std::cout << oPlayer.at(i).q;
 				}
 
 			}
