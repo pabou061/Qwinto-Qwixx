@@ -173,13 +173,13 @@ bool QwintoScoreSheet::validate(RollOfDice rd, Colour selectedC, int positionL) 
  std::ostream & operator<<(std::ostream & out, QwintoScoreSheet s)
  {
 	 out << "Player name: " << s.playername << "\t Points: " << s.currScore << std::endl;
-	 out << "\t\t ------------------------------" << std::endl;
+	 out << "\t\t-------------------------------" << std::endl;
 	 out << s.r;
-	 out << "\t ------------------------------" << std::endl;
+	 out << "\t     ----------------------------------" << std::endl;
 	 out << s.y;
-	 out << "\t ------------------------------" << std::endl;
+	 out << "\t -----------------------------------" << std::endl;
 	 out << s.b;
-	 out << "\t ------------------------------" << std::endl;
+	 out << "\t --------------------------------" << std::endl;
 	 out << "Failed throws: " << s.failedAttempts << std::endl;
 	 return out;
  }
