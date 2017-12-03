@@ -48,15 +48,17 @@ void QwintoPlayer::inputBeforeRoll(RollOfDice &_rollOfDice) {
 
 void QwintoPlayer::inputAfterRoll(RollOfDice &_rollOfDice) {
 
-	std::string input = "";
-	std::string input2 = "";
-	int number = 0;
+
+	
 	bool isDone = false;
 	std::locale loc;
 	std::vector<Dice> SelectedColors;
 
 
 	while (!isDone) {
+		int number = 0;
+		std::string input = "";
+		std::string input2 = "";
 		std::cout << "Please select the row color where you would like to place your score" << std::endl;
 
 		if (!isPlaying) {
@@ -86,6 +88,7 @@ void QwintoPlayer::inputAfterRoll(RollOfDice &_rollOfDice) {
 
 			}
 		}
+		number--;
 
 		if (input == "fail" && isPlaying)
 		{
