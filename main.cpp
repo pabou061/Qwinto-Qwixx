@@ -28,26 +28,34 @@ int main() {
 	std::string wName;
 
 	while (gameversion != "qwixx" && gameversion != "qwinto") {
-		std::cout << "Choose the game you want" << std::endl;
+		std::cout << "Choose the game you want: qwinto or qwixx" << std::endl;
 		std::cin >> gameversion;
 		std::transform(gameversion.begin(), gameversion.end(), gameversion.begin(), ::tolower);
 	}
 
-	 std::cout << "\nPlease enter the amount of players: \n";
-	 do {
-		 while (!(std::cin >> nbPlayers)) {
-			 std::cout << "Incorrect input. Please try again.\n";
+	
+	
+
+	 while (nbPlayers <2 || nbPlayers >6)
+	 {
+		 std::cout << "\nPlease enter the amount of players: \n";
+		 std::cin >> nbPlayers;
+		 if (std::cin.fail()) {
 			 std::cin.clear();
 			 std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
 		 }
-	 } while (nbPlayers <= 0);
+	
+
+	 }
+		
+	 
 
 
 
 	std::cout << "Type the name of the player" << std::endl;
 	for (size_t i = 0; i < nbPlayers; i++)
 	{
-		std::cout << "Player " << i << std::endl;
+		std::cout << "Player " << i+1 << std::endl;
 		std::cin >> pname;
 		namePlayers.push_back(pname);
 
