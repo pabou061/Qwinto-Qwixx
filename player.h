@@ -1,9 +1,20 @@
-#pragma once
 
+#ifndef PLAYER_HEADER
+#define PLAYER_HEADER
 #include "RollOfDice.h"
-class Player {
-	bool isPlaying;
-	virtual void inputBeforeRoll(RollOfDice r);
-	virtual void inputAfterRoll(RollOfDice r);
+#include <string>
 
+
+
+class Player {
+public:
+	std::string name;
+	bool isPlaying;
+	Player() {};
+	Player(std::string _name) { name = _name; };
+	virtual void inputBeforeRoll(RollOfDice &_rollOfDice) = 0;
+	virtual void inputAfterRoll(RollOfDice &_rollOfDice) = 0;
+	
 };
+
+#endif

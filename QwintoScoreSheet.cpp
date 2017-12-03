@@ -123,10 +123,15 @@ QwintoScoreSheet::~QwintoScoreSheet()
 
 bool QwintoScoreSheet::validate(RollOfDice rd, Colour selectedC, int positionL) {
 
-
+	bool isCorrect = false;
 	for (Dice d : rd) {
-		if (d.c != selectedC)
-			return false;
+		if (d.c == selectedC)
+			isCorrect =true;
+	}
+
+	if (!isCorrect)
+	{
+		return false;
 	}
 	switch (selectedC)
 	{

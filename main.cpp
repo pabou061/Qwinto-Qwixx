@@ -4,32 +4,162 @@
 #include <list>
 #include "QwintoRow.h"
 #include "QwixxRow.h"
+#include "QwintoPlayer.h"
+#include "QwixxPlayer.h"
+#include "player.h"
+#include "QwixxScoreSheet.h"
+#include "QwintoScoreSheet.h"
+#include "ScoreSheet.h"
+#include <vector>
+#include <string>
 int main() {
-	Colour b = WHITE;
-	Dice c(b);
-	Dice d(b);
-	Dice e(b);
-	QwintoRow<RED> qrr;
-	QwintoRow<YELLOW> qyy;
-	QwintoRow<BLUE> qbb;
-	QwixxRow<std::vector<int>, RED> qxx;
-	std::cout << qxx;
-	std::vector<Dice>dV = { c,d };
-	
-	std::vector<Dice>dE = { c,c,c,c,c,c,c,c,c,c,c,c,c };
 
-	RollOfDice z(dV);
-	RollOfDice z1(dE);
-	z1.roll();
-	z.roll();
-	qxx += z;
-	try {
-		qxx += z;
+	std::string gameversion = "";
+	int nbPlayers = 0;
+	std::vector<std::string> namePlayers;
+	std::string pname;
+	std::vector<QwixxPlayer> xPlayer;
+	std::vector<QwintoPlayer> oPlayer;
+	RollOfDice rd;
+	bool done = false;
+	int turn = 0;
+	int currentPlayer = 0;
+	int wScore = -21;
+	std::string wName;
+
+	while (gameversion != "qwixx" && gameversion != "qwinto") {
+		std::cout << "Choose the game you want" << std::endl;
+		std::cin >> gameversion;
+		std::transform(gameversion.begin(), gameversion.end(), gameversion.begin(), ::tolower);
+	}
+
+	while (nbPlayers <= 0) {
+		std::cout << "Choose the number of players" << std::endl;
+		std::cin >> nbPlayers;
+	}
+
+
+	std::cout << "Type the name of the player";
+	for (size_t i = 0; i < nbPlayers; i++)
+	{
+		std::cout << "Player " << i << std::endl;
+		std::cin >> pname;
+		namePlayers.push_back(pname);
 
 	}
-	catch (...) {
-		std::cout << "farts";
+
+	if (gameversion == "qwixx")
+	{
+		for (size_t i = 0; i < nbPlayers; i++)
+		{
+			QwixxScoreSheet q(namePlayers.at(i));
+			xPlayer.push_back(QwixxPlayer(namePlayers.at(i), q));
+		}
+
+
+		while (!done) {
+
+			currentPlayer = turn % nbPlayers;
+			QwixxPlayer &cp = xPlayer.at(currentPlayer);
+			cp.isPlaying = true;
+			cp.inputBeforeRoll(rd);
+			rd.roll();
+			std::cout << rd;
+			std::cout << cp.q;
+			cp.inputAfterRoll(rd);
+			cp.q.setTotal();
+			for (size_t i = 0; i < nbPlayers; i++)
+			{
+				if (currentPlayer != i) {
+					std::cout << xPlayer.at(i).q;
+					xPlayer.at(i).inputAfterRoll(rd);
+					xPlayer.at(i).q.setTotal();
+				}
+
+			}
+			for (size_t i = 0; i < nbPlayers; i++)
+			{
+				if (!xPlayer.at(i).q) {
+					done = true;
+				}
+
+			}
+			cp.isPlaying = false;
+			turn++;
+		}
+
+		for (size_t i = 0; i < nbPlayers; i++)
+		{
+			xPlayer.at(i).q.setTotal();
+			std::cout << xPlayer.at(i).q;
+			if (xPlayer.at(i).q.currScore > wScore) {
+				wScore = xPlayer.at(i).q.currScore;
+				wName = xPlayer.at(i).name;
+			}
+		}
+
+		std::cout << "Winner: " << wName << " with a score of: " << wScore << std::endl;
+
+
+
+
 	}
-	std::cout << qxx;
-	return 0;
+	else {
+
+		for (size_t i = 0; i < nbPlayers; i++)
+		{
+			QwintoScoreSheet q(namePlayers.at(i));
+			oPlayer.push_back(QwintoPlayer(namePlayers.at(i), q));
+		}
+
+
+		while (!done) {
+
+			currentPlayer = turn % nbPlayers;
+			QwintoPlayer &cp = oPlayer.at(currentPlayer);
+			cp.isPlaying = true;
+			cp.inputBeforeRoll(rd);
+			rd.roll();
+			std::cout << rd;
+			std::cout << cp.q;
+			cp.inputAfterRoll(rd);
+			cp.q.setTotal();
+			for (size_t i = 0; i < nbPlayers; i++)
+			{
+				if (currentPlayer != i) {
+					std::cout << oPlayer.at(i).q;
+					oPlayer.at(i).inputAfterRoll(rd);
+					oPlayer.at(i).q.setTotal();
+				}
+
+			}
+			for (size_t i = 0; i < nbPlayers; i++)
+			{
+				if (!oPlayer.at(i).q) {
+					done = true;
+				}
+
+			}
+			cp.isPlaying = false;
+			turn++;
+		}
+
+		for (size_t i = 0; i < nbPlayers; i++)
+		{
+			oPlayer.at(i).q.setTotal();
+			std::cout << oPlayer.at(i).q;
+			if (oPlayer.at(i).q.currScore > wScore) {
+				wScore = oPlayer.at(i).q.currScore;
+				wName = oPlayer.at(i).name;
+			}
+		}
+
+		std::cout << "Winner: " << wName << " with a score of: " << wScore << std::endl;
+
+
+
+
+	}
+
 }
+
