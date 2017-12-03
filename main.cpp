@@ -33,13 +33,18 @@ int main() {
 		std::transform(gameversion.begin(), gameversion.end(), gameversion.begin(), ::tolower);
 	}
 
-	while (nbPlayers <= 0) {
-		std::cout << "Choose the number of players" << std::endl;
-		std::cin >> nbPlayers;
-	}
+	 std::cout << "\nPlease enter the amount of players: \n";
+	 do {
+		 while (!(std::cin >> nbPlayers)) {
+			 std::cout << "Incorrect input. Please try again.\n";
+			 std::cin.clear();
+			 std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+		 }
+	 } while (nbPlayers <= 0);
 
 
-	std::cout << "Type the name of the player";
+
+	std::cout << "Type the name of the player" << std::endl;
 	for (size_t i = 0; i < nbPlayers; i++)
 	{
 		std::cout << "Player " << i << std::endl;
