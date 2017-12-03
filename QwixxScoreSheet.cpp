@@ -22,7 +22,7 @@ int QwixxScoreSheet::calcTotal()
 	int total = 0;
 	total -= failedAttempts * 5;
 
-	for (size_t i = 0; i < 12; i++)
+	for (size_t i = 0; i < 11; i++)
 	{
 		total += r.rScore[i] + y.rScore[i];
 	}
@@ -45,7 +45,7 @@ bool const QwixxScoreSheet::operator!()
 {
 	if (failedAttempts == 4)
 	{
-		return false;
+		return true;
 	}
 	int counter = 0;
 	for (int i = 0; i < 4; i++) {

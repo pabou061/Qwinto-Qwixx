@@ -174,7 +174,7 @@ void QwixxPlayer::inputAfterRoll(RollOfDice &_rollOfDice) {
 					std::transform(input.begin(), input.end(), input.begin(), ::tolower);
 
 
-					if (input == "pass" && !isPlaying)
+					if (input == "pass")
 					{
 						whiteDone = true;
 					}
