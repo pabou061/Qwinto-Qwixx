@@ -2,10 +2,10 @@
 
 std::ostream & operator<<(std::ostream & out, RollOfDice const & obj)
 {
-	out << "This dice contains the following values: ";
+	out << "This roll of dice contains the following dice: " << std::endl;
 	for (Dice d6 : obj) {
 		out << d6;
-		out << " ";
+		
 	}
 	out << std::endl;
 	return out;

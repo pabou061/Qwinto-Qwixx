@@ -28,7 +28,25 @@ public:
 	RandomDice rdice;
 	inline Dice() :c(RED) {}; //needed that for a test might pull it out.
 	inline Dice(Colour colour):c(colour) {};
-	inline friend std::ostream& operator<<(std::ostream& out, Dice const& obj) { return out << obj.face; }
+	inline friend std::ostream& operator<<(std::ostream& out, Dice const& obj) { 
+		switch (obj.c) {
+		case(RED):
+			out << "Red: ";
+			break;
+		case(BLUE):
+			out << "Blue: ";
+			break;
+		case(YELLOW):
+			out << "Yellow: ";
+			break;
+		case(GREEN):
+			out << "Green: ";
+			break;
+		case(WHITE):
+			out << "White: ";
+			break;
+		}
+			return out << obj.face << std::endl; }
 	inline int getFace() { return face; }
 	//inline friend bool operator==(Dice d6, Dice d) { return d6.c == d.c && d6.getFace() == d.getFace(); }
 	
