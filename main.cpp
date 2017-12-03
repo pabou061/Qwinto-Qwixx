@@ -73,12 +73,14 @@ int main() {
 			std::cout << cp.q;
 			cp.inputAfterRoll(rd);
 			cp.q.setTotal();
+			std::cout << cp.q;
 			for (size_t i = 0; i < nbPlayers; i++)
 			{
 				if (currentPlayer != i) {
 					std::cout << xPlayer.at(i).q;
 					xPlayer.at(i).inputAfterRoll(rd);
 					xPlayer.at(i).q.setTotal();
+					std::cout << xPlayer.at(i).q;
 				}
 
 			}

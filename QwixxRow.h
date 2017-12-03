@@ -27,7 +27,7 @@ void QwixxRow<T, colour>::print(std::ostream & out) const
 	if (colour == RED) { out << "Red     "; }
 	else if (colour == BLUE) { out << "Blue    "; }
 	else if (colour == YELLOW) { out << "Yellow  "; }
-	else { out << "Green    "; }
+	else { out << "Green   "; }
 	int i = 2;
 	for (int b : rScore) {
 		out << "|";	
@@ -59,27 +59,13 @@ QwixxRow<T,colour> QwixxRow<T, colour>::operator+=(RollOfDice rd)
 	}
 	int vd = rd;
 	counter = 0;
-	if (colour == RED || colour == YELLOW) {
-		for (int i : rScore) {
-
-			if (vd > counter) {}
-			else if (i != 0) {
-				throw "There are scores at the right of where you want to put your score";
-
-			}
-			counter++;
+	for (int  i : rScore) {
+		if (vd > counter) {}
+		else if(i != 0) {
+			throw "There are scores at the right of where you want to put your score";
+			
 		}
-	}
-	else {
-		for (int i : rScore) {
-
-			if (vd < counter) {}
-			else if (i != 0) {
-				throw "There are scores at the right of where you want to put your score";
-
-			}
-			counter++;
-		}
+		counter++;
 	}
 	counter = 0;
 	for (int & i : rScore) {
