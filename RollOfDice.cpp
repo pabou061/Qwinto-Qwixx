@@ -14,7 +14,7 @@ std::ostream & operator<<(std::ostream & out, RollOfDice const & obj)
 RollOfDice::RollOfDice(std::vector<Dice> vD) :d(vD) {}
 
 
-void RollOfDice::roll()
+void RollOfDice::roll()//to roll a rollofdice you need to roll all the dice inside of it
 {
 	for (Dice& d6 : *this) {
 		d6.roll();
@@ -27,7 +27,7 @@ RollOfDice RollOfDice::pair(Dice d1, Dice d2)
 	return RollOfDice(tmp);
 }
 
-RollOfDice::operator int() const
+RollOfDice::operator int() const //the value of a roll of dice is equal to all the faces of the die added up
 {
 	int sum = 0;
 	for (Dice d6 : *this) {

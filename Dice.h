@@ -10,7 +10,7 @@ struct RandomDice
 public:
 	int getRandom();
 private:
-
+	//those 4 objects allow us to do a distribution
 	static std::random_device seed_generator;
 	static unsigned seed;
 	static std::mt19937 mersenne_generator;
@@ -28,9 +28,9 @@ public:
 	RandomDice rdice;
 	inline Dice() :c(RED) {}; //needed that for a test might pull it out.
 	inline Dice(Colour colour) :c(colour) {};
-	inline friend std::ostream& operator<<(std::ostream& out, Dice const& obj) {
-		switch (obj.c) {
-		case(RED):
+	inline friend std::ostream& operator<<(std::ostream& out, Dice const& obj) { 
+		switch (obj.c) { //informs the caller of the color of the dice
+		case(RED): 
 			out << "Red: ";
 			break;
 		case(BLUE):
@@ -48,7 +48,7 @@ public:
 		}
 		return out << obj.face << std::endl;
 	}
-	inline int getFace() { return face; }
+	inline int getFace() { return face; }//since face is private we need a getter
 	//inline friend bool operator==(Dice d6, Dice d) { return d6.c == d.c && d6.getFace() == d.getFace(); }
 
 

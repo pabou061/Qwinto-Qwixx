@@ -2,11 +2,12 @@
 #include "Colour.h"
 #include "RollOfDice.h"
 #include <ostream>
-
+//for the next 3 functions we just treat different cases because they have different cases that cannot be scored in
 bool QwintoRow<RED>::validate(RollOfDice rd, int pos) {
 	if (pos < 0) { return false; }
 	if (pos > 10) { return false; }
 	if (pos == 3) return false;
+	//here we check if all the numbers at the left of the position we desire have something in them
 	for (int i = 0; i < pos; i++) {
 		if (i != 3) {
 			if (rScore[i] <= 0) {
@@ -14,7 +15,8 @@ bool QwintoRow<RED>::validate(RollOfDice rd, int pos) {
 			}
 		}
 	}
-	return rScore[pos - 1] < rd && rScore[pos] == 0;
+	return rScore[pos - 1] < rd && rScore[pos] == 0; //return if it's greater than the previous one and the position has nothing in it. there is no need to check if the board always goes up since we assume
+	//that we always use validate before scoring 
 }
 bool QwintoRow<YELLOW>::validate(RollOfDice rd, int pos) {
 	if (pos < 0) { return false; }
@@ -42,7 +44,7 @@ bool QwintoRow<BLUE>::validate(RollOfDice rd, int pos) {
 	}
 	return rScore[pos - 1] < rd && rScore[pos] == 0;
 }
-
+//for the next 3 functions we just treat different cases because they have different cases where the row is not identical. All of the special cases are handled by the scoresheet.
 std::ostream& operator<<(std::ostream& out, QwintoRow<RED> qRow)
 	{
 			out << "Red" << "             ";
