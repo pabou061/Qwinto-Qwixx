@@ -65,7 +65,7 @@ void QwixxPlayer::inputAfterRoll(RollOfDice &_rollOfDice) {
 						}
 						while (wNumber != 1 && wNumber != 2) {
 							std::cout << "Please enter the number of the white die that you desire :";
-							std::cin >> input2;
+							std::cin >> number;
 							if (std::cin.fail()) {
 								std::cin.clear();
 								std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');

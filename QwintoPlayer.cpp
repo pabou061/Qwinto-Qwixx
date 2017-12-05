@@ -76,9 +76,9 @@ void QwintoPlayer::inputAfterRoll(RollOfDice &_rollOfDice) {
 
 		if (input != "fail" && input != "pass") {
 		
-			while (number < 1 || number >9) {
-				std::cout << "Please select the column number (between 1 and 9) where you would like to place your score: " << std::endl;
-				std::cin >> input2;
+			while (number < 1 || number >10) {
+				std::cout << "Please select the column number (between 1 and 10) where you would like to place your score: " << std::endl;
+				std::cin >> number;
 				
 				if (std::cin.fail()) {
 					std::cin.clear();
@@ -87,7 +87,7 @@ void QwintoPlayer::inputAfterRoll(RollOfDice &_rollOfDice) {
 				else {
 				//	number = std::stoi(input2);
 				}
-				if (number < 1 || number>9)
+				if (number < 1 || number>10)
 				{
 					std::cout << "invalid number" << std::endl;
 				}
