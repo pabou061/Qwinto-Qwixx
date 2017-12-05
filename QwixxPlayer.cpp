@@ -72,7 +72,7 @@ void QwixxPlayer::inputAfterRoll(RollOfDice &_rollOfDice) {
 							}
 							else {
 								std::cout << std::endl;
-								wNumber = std::stoi(input2);
+								//wNumber = std::stoi(input2);
 							}
 
 							if (wNumber != 1 && wNumber != 2) {
