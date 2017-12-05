@@ -36,7 +36,7 @@ int main() {
 	
 	
 
-	 while (nbPlayers <2 || nbPlayers >6)
+	 while (nbPlayers <1 || nbPlayers >3)
 	 {
 		 std::cout << "\nPlease enter the amount of players: \n";
 		 std::cin >> nbPlayers;

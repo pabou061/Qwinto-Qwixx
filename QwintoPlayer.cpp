@@ -80,7 +80,14 @@ void QwintoPlayer::inputAfterRoll(RollOfDice &_rollOfDice) {
 
 			while (number < 1 || number >9) {
 				std::cin >> input2;
-				number = std::stoi(input2);
+				
+				if (std::cin.fail()) {
+					std::cin.clear();
+					std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+				}
+				else {
+					number = std::stoi(input2);
+				}
 				if (number < 1 || number>9)
 				{
 					std::cout << "invalid number" << std::endl;
