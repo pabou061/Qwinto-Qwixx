@@ -20,7 +20,7 @@ void QwixxPlayer::inputBeforeRoll(RollOfDice &_rollOfDice)
 void QwixxPlayer::inputAfterRoll(RollOfDice &_rollOfDice) {
 
 	std::string input = "";
-	std::string input2 = "";
+	int input2 = 0;
 	int number = 0;
 	bool isDone = false;
 	std::locale loc;
