@@ -114,7 +114,7 @@ bool const QwintoScoreSheet::operator!()
 			break;
 		}
 	}
-	return counter =< 1 ? true : false;
+	return counter <= 1 ? true : false;
 }
 
 QwintoScoreSheet::~QwintoScoreSheet()
