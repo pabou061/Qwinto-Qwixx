@@ -101,8 +101,8 @@ int main() {
 				}
 
 			}
-			for (size_t i = 0; i < 4; i++) {
-				for (size_t k = 0; k < 4; i++) {
+			for (size_t i = 0; i < nbPlayers; i++) {
+				for (size_t k = 0; k < 4; k++) {
 					if (xPlayer.at(i).q.isLocked[k]) {
 						for (size_t j = 0; j < nbPlayers; j++) {
 							xPlayer.at(j).q.isLocked[i] = true;
