@@ -58,7 +58,7 @@ void QwixxPlayer::inputAfterRoll(RollOfDice &_rollOfDice) {
 						i = 1;
 						for (Dice d6 : _rollOfDice) {
 							if (d6.c == WHITE) {
-								std::cout << i << ":" << d6 << ".";
+								std::cout << i << ":" << d6 ;
 
 								i++;
 							}
