@@ -271,6 +271,12 @@ void QwixxPlayer::inputAfterRoll(RollOfDice &_rollOfDice) {
 			std::cout << "NOTE: You can type \"pass\" to skip with no penalty " << std::endl;
 			std::cin >> input;
 			std::transform(input.begin(), input.end(), input.begin(), ::tolower);
+			
+			std::vector<Dice> vD;
+			vD.push_back(_rollOfDice.d.at(4));
+			
+			vD.push_back(_rollOfDice.d.at(5));
+			RollOfDice rd(vD);
 
 			if (input == "pass" && !isPlaying)
 			{
@@ -279,10 +285,10 @@ void QwixxPlayer::inputAfterRoll(RollOfDice &_rollOfDice) {
 			}
 			else if (input == "red") // check if the color is in the roll
 			{
-				if (q.score(_rollOfDice, RED)) {
+				if (q.score(rd, RED)) {
 					try
 					{
-						q.r += _rollOfDice;
+						q.r += rd;
 						isDone = true;
 					}
 					catch (const std::exception&)
@@ -297,10 +303,10 @@ void QwixxPlayer::inputAfterRoll(RollOfDice &_rollOfDice) {
 			}
 			else if (input == "yellow")
 			{
-				if (q.score(_rollOfDice, YELLOW)) {
+				if (q.score(rd, YELLOW)) {
 					try
 					{
-						q.y += _rollOfDice;
+						q.y += rd;
 						isDone = true;
 					}
 					catch (const std::exception&)
@@ -310,10 +316,10 @@ void QwixxPlayer::inputAfterRoll(RollOfDice &_rollOfDice) {
 				}
 			}
 			else if (input == "blue") {
-				if (q.score(_rollOfDice, BLUE)) {
+				if (q.score(rd, BLUE)) {
 					try
 					{
-						q.b += _rollOfDice;
+						q.b += rd;
 						isDone = true;
 					}
 					catch (const std::exception&)
@@ -323,10 +329,10 @@ void QwixxPlayer::inputAfterRoll(RollOfDice &_rollOfDice) {
 				}
 			}
 			else if (input == "green") {
-				if (q.score(_rollOfDice, GREEN)) {
+				if (q.score(rd, GREEN)) {
 					try
 					{
-						q.g += _rollOfDice;
+						q.g += rd;
 						isDone = true;
 					}
 					catch (const std::exception&)
