@@ -63,7 +63,7 @@ bool QwixxScoreSheet::validate(RollOfDice rd, Colour selectedC, int positionL)
 {
 
 	for (Dice d : rd) {
-		if (d.c != selectedC || d.c != WHITE)
+		if (d.c != selectedC && d.c != WHITE)
 			return false;
 	}
 

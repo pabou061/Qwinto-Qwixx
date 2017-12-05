@@ -2,6 +2,7 @@
 #include "Colour.h"
 #include <ostream>
 #include "RollOfDice.h"
+#include <algorithm>
 template<class T,const  Colour colour> class QwixxRow {
 	public:
 		T rScore;
@@ -28,15 +29,30 @@ void QwixxRow<T, colour>::print(std::ostream & out) const
 	else if (colour == BLUE) { out << "Blue    "; }
 	else if (colour == YELLOW) { out << "Yellow  "; }
 	else { out << "Green   "; }
-	int i = 2;
-	for (int b : rScore) {
-		out << "|";	
-				if (b > 0) { out << "XX"; }
-				else{
-					if (i < 10) { out << " " << i; }
-					else { out << i; }
-				}
-				i++;
+	
+	if (colour == RED || colour == YELLOW) {
+		int i = 2;
+		for (int b : rScore) {
+			out << "|";
+			if (b > 0) { out << "XX"; }
+			else {
+				if (i < 10) { out << " " << i; }
+				else { out << i; }
+			}
+			i++;
+		}
+	}
+	else {
+		int i = 12;
+		for (int b : rScore) {
+			out << "|";
+			if (b > 0) { out << "XX"; }
+			else {
+				if (i < 10) { out << " " << i; }
+				else { out << i; }
+			}
+			--i;
+		}
 	}
 	out << "|";
 
@@ -58,9 +74,16 @@ QwixxRow<T,colour> QwixxRow<T, colour>::operator+=(RollOfDice rd)
 		throw "Your roll does not have 2 dice";
 	}
 	int vd = rd;
+	int pos;
+	if (colour == RED || colour == YELLOW) {
+		pos = vd - 2;
+	}
+	else {
+		pos = std::abs(vd - 2 - 10);
+	}
 	counter = 0;
 	for (int  i : rScore) {
-		if (vd > counter) {}
+		if (pos > counter) {}
 		else if(i != 0) {
 			throw "There are scores at the right of where you want to put your score";
 			
@@ -69,7 +92,7 @@ QwixxRow<T,colour> QwixxRow<T, colour>::operator+=(RollOfDice rd)
 	}
 	counter = 0;
 	for (int & i : rScore) {
-		if (vd == counter) {
+		if (pos == counter) {
 			if (i != 0) {
 				throw "There is a score where you are trying to put your score";
 				

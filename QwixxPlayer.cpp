@@ -45,7 +45,7 @@ void QwixxPlayer::inputAfterRoll(RollOfDice &_rollOfDice) {
 			if (input == "yes" && !colorDone) {
 				std::vector<Dice> vDice;
 				while (!colorDone) {
-					std::cout << "Please select the row color where you would like to place your score";
+					std::cout << "Please select the row color where you would like to place your score" << std::endl;
 					std::cout << "NOTE: You can type \"pass\" to skip this section if you have realised that you cannot score " << std::endl;
 					std::cin >> input;
 					std::transform(input.begin(), input.end(), input.begin(), ::tolower);
@@ -58,7 +58,7 @@ void QwixxPlayer::inputAfterRoll(RollOfDice &_rollOfDice) {
 						i = 1;
 						for (Dice d6 : _rollOfDice) {
 							if (d6.c == WHITE) {
-								std::cout << i << ":" << d6 << ".";
+								std::cout << i << ":" << d6 ;
 
 								i++;
 							}
@@ -72,7 +72,7 @@ void QwixxPlayer::inputAfterRoll(RollOfDice &_rollOfDice) {
 								std::cout << "invalid number" << std::endl;
 							}
 							else {
-								vDice.push_back(_rollOfDice.d.at(i + 3));
+								vDice.push_back(_rollOfDice.d.at(wNumber + 3));
 
 							}
 						}
@@ -260,8 +260,8 @@ void QwixxPlayer::inputAfterRoll(RollOfDice &_rollOfDice) {
 
 	else {
 		while (!isDone) {
-			std::cout << "Please select the row color where you would like to place your score";
-			std::cout << "NOTE: You can type \"pass\" to skip with no penalty ";
+			std::cout << "Please select the row color where you would like to place your score" << std::endl;
+			std::cout << "NOTE: You can type \"pass\" to skip with no penalty " << std::endl;
 			std::cin >> input;
 			std::transform(input.begin(), input.end(), input.begin(), ::tolower);
 
