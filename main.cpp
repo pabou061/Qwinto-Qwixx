@@ -143,12 +143,6 @@ int main() {
 		for (size_t i = 0; i < nbPlayers; i++)
 		{
 			QwintoScoreSheet q(namePlayers.at(i));
-			for (size_t i = 0; i < 9; i++)
-			{
-				q.r[i] = 1;
-				q.b[i] = 1;
-				q.y[i] = 1;
-			}
 			oPlayer.push_back(QwintoPlayer(namePlayers.at(i), q));
 		}
 
