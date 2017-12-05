@@ -59,6 +59,46 @@ QwixxScoreSheet::~QwixxScoreSheet()
 {
 }
 
+void QwixxScoreSheet::updateLock()
+{
+	int counter1 = 0;
+	int counter2 = 0;
+	for (int i = 0; i < 11; i++) {
+		if (r.rScore[i] > 0) {
+			counter1++;
+		}
+		if (y.rScore[i] > 0) {
+			counter2++;
+		}
+	}
+	if (counter1 >= 5) {
+		isLocked[0] = true;
+	}
+	if (counter2 >= 5) {
+		isLocked[1] = true;
+	}
+	counter1 = 0;
+	counter2 = 0;
+	for (int i : b.rScore) {
+		if (i > 0) {
+			counter1++;
+		}
+	}
+	for (int i : g.rScore) {
+		if (i > 0) {
+			counter1++;
+		}
+	}
+	if (counter1 >= 5) {
+		isLocked[2] = true;
+	}
+	if (counter2 >= 5) {
+		isLocked[3] = true;
+	}
+
+}
+
+
 bool QwixxScoreSheet::validate(RollOfDice rd, Colour selectedC, int positionL)
 {
 

@@ -82,6 +82,15 @@ int main() {
 			cp.inputAfterRoll(rd);
 			cp.q.setTotal();
 			std::cout << cp.q;
+
+			for (size_t i = 0; i < 4; i++) {
+				if (cp.q.isLocked[i]) {
+					for (size_t j = 0; j < nbPlayers; j++) {
+						xPlayer.at(j).q.isLocked[i] = true;
+					}
+				}
+			}
+
 			for (size_t i = 0; i < nbPlayers; i++)
 			{
 				if (currentPlayer != i) {
@@ -92,6 +101,16 @@ int main() {
 				}
 
 			}
+			for (size_t i = 0; i < 4; i++) {
+				for (size_t k = 0; k < 4; i++) {
+					if (xPlayer.at(i).q.isLocked[k]) {
+						for (size_t j = 0; j < nbPlayers; j++) {
+							xPlayer.at(j).q.isLocked[i] = true;
+						}
+					}
+				}
+			}
+
 			for (size_t i = 0; i < nbPlayers; i++)
 			{
 				if (!xPlayer.at(i).q) {

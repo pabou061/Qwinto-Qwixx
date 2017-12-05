@@ -21,6 +21,7 @@ public:
 	friend std::ostream& operator<<(std::ostream& out, QwixxScoreSheet s);
 
 	~QwixxScoreSheet();
+	void updateLock();
 protected:
 	bool validate(RollOfDice rd, Colour selectedC, int positionL = -1);
 
