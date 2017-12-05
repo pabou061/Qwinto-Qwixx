@@ -10,7 +10,7 @@ struct RandomDice
 public:
 	int getRandom();
 private:
-	
+
 	static std::random_device seed_generator;
 	static unsigned seed;
 	static std::mt19937 mersenne_generator;
@@ -18,7 +18,7 @@ private:
 };
 
 
-class Dice{
+class Dice {
 private:
 	int face;
 public:
@@ -27,8 +27,8 @@ public:
 
 	RandomDice rdice;
 	inline Dice() :c(RED) {}; //needed that for a test might pull it out.
-	inline Dice(Colour colour):c(colour) {};
-	inline friend std::ostream& operator<<(std::ostream& out, Dice const& obj) { 
+	inline Dice(Colour colour) :c(colour) {};
+	inline friend std::ostream& operator<<(std::ostream& out, Dice const& obj) {
 		switch (obj.c) {
 		case(RED):
 			out << "Red: ";
@@ -46,10 +46,11 @@ public:
 			out << "White: ";
 			break;
 		}
-			return out << obj.face << std::endl; }
+		return out << obj.face << std::endl;
+	}
 	inline int getFace() { return face; }
 	//inline friend bool operator==(Dice d6, Dice d) { return d6.c == d.c && d6.getFace() == d.getFace(); }
-	
+
 
 };
 
