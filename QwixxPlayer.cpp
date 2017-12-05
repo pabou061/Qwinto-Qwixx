@@ -37,15 +37,9 @@ void QwixxPlayer::inputAfterRoll(RollOfDice &_rollOfDice) {
 		int wNumber = 0;
 
 
-		while (!isDone) {
-			std::cout << "Would you like to score using your die of color and a white die? Please enter yes or no. " << std::endl;
-			std::cin >> input;
-			std::transform(input.begin(), input.end(), input.begin(), ::tolower);
-
-			if (input == "yes" && !colorDone) {
 				std::vector<Dice> vDice;
 				while (!colorDone) {
-					std::cout << "Please select the row color where you would like to place your score" << std::endl;
+					std::cout << "Please select the row color where you would like to place your score using the die of the color you select" << std::endl;
 					std::cout << "NOTE: You can type \"pass\" to skip this section if you have realised that you cannot score " << std::endl;
 					std::cin >> input;
 					std::transform(input.begin(), input.end(), input.begin(), ::tolower);
@@ -167,8 +161,6 @@ void QwixxPlayer::inputAfterRoll(RollOfDice &_rollOfDice) {
 
 				}
 
-			}
-			else if (!whiteDone) {
 				std::vector<Dice> whiteDice;
 				for (Dice d6 : _rollOfDice) {
 					if (d6.c == WHITE) {
@@ -177,7 +169,7 @@ void QwixxPlayer::inputAfterRoll(RollOfDice &_rollOfDice) {
 				}
 				RollOfDice rd = RollOfDice(whiteDice);
 				while (!whiteDone) {
-					std::cout << "Please select the row color where you would like to place your score";
+					std::cout << "Please select the row color where you would like to place your score using the 2 white dice" << std::endl;
 					std::cout << "NOTE: You can type \"pass\" to skip this section if you have realised that you cannot score " << std::endl;
 					std::cin >> input;
 					std::transform(input.begin(), input.end(), input.begin(), ::tolower);
@@ -255,11 +247,8 @@ void QwixxPlayer::inputAfterRoll(RollOfDice &_rollOfDice) {
 
 
 				}
-			}
-			if (whiteDone && colorDone) {
-				isDone = true;
-			}
-		}
+			
+		
 
 		if (counter <= 0)  q.failedAttempts++;
 	}
