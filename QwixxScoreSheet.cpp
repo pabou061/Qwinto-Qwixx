@@ -3,6 +3,7 @@
 #include <list>
 #include <string>
 
+//initialisation d'un ScoreSheet pour un joueur
 QwixxScoreSheet::QwixxScoreSheet(std::string name) {
 
 	QwixxRow <std::vector<int>, RED> r();
@@ -17,6 +18,7 @@ QwixxScoreSheet::QwixxScoreSheet(std::string name) {
 
 }
 
+// function qui calcul le total pour le joueur
 int QwixxScoreSheet::calcTotal()
 {
 	int total = 0;
@@ -36,11 +38,12 @@ int QwixxScoreSheet::calcTotal()
 	return total;
 }
 
+// public funtion qui appelle calcTotal()
 void QwixxScoreSheet::setTotal()
 {
 	currScore = calcTotal();
 }
-
+// fonction qui check si le jeu est fini: 4 failed attempts ou 2 lignes terminées
 bool const QwixxScoreSheet::operator!()
 {
 	if (failedAttempts == 4)
@@ -58,7 +61,7 @@ bool const QwixxScoreSheet::operator!()
 QwixxScoreSheet::~QwixxScoreSheet()
 {
 }
-
+// s'il y a une ligne qui est locked car on a 5 scores, on la met Locked pour tous les joueurs
 void QwixxScoreSheet::updateLock()
 {
 	int counter1 = 0;
@@ -98,7 +101,7 @@ void QwixxScoreSheet::updateLock()
 
 }
 
-
+// validation si la ligne est locked (il y a 5 scores dans une ligne)
 bool QwixxScoreSheet::validate(RollOfDice rd, Colour selectedC, int positionL)
 {
 
@@ -127,6 +130,7 @@ bool QwixxScoreSheet::validate(RollOfDice rd, Colour selectedC, int positionL)
 	return true;
 }
 
+//override print function
 std::ostream & operator<<(std::ostream & out, QwixxScoreSheet s)
 {
 	out << "Player name: " << s.playername << "\t Points: " << s.currScore << std::endl;

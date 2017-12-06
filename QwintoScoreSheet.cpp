@@ -1,6 +1,7 @@
 #include "QwintoScoreSheet.h"
 #include <string>
 
+// initialisation d'un ScoreSheet pour un Player
 QwintoScoreSheet::QwintoScoreSheet(std::string name) {
 	QwintoRow <RED> r();
 	QwintoRow <BLUE> b();
@@ -11,6 +12,7 @@ QwintoScoreSheet::QwintoScoreSheet(std::string name) {
 
 }
 
+//fonntion qui calcule le total pour un joueur
 int QwintoScoreSheet::calcTotal()
 {
 	int total = 0;
@@ -79,10 +81,12 @@ int QwintoScoreSheet::calcTotal()
 	return total;
 }
 
-
+// public function qui appelle calcTotal()
 void QwintoScoreSheet::setTotal() {
 	currScore= calcTotal();
 }
+
+// fonction qui check si le jeu est terminé: 4 failed attempts ou 2 lignes qui sont remplies
 bool const QwintoScoreSheet::operator!()
 {
 
@@ -121,6 +125,7 @@ QwintoScoreSheet::~QwintoScoreSheet()
 {
 }
 
+//fonction qui check si le score que le joueur veux mettre dans une case est valide
 bool QwintoScoreSheet::validate(RollOfDice rd, Colour selectedC, int positionL) {
 
 	bool isCorrect = false;
@@ -169,7 +174,7 @@ bool QwintoScoreSheet::validate(RollOfDice rd, Colour selectedC, int positionL) 
 	return true;
 }
 
-
+//override print function
  std::ostream & operator<<(std::ostream & out, QwintoScoreSheet s)
  {
 	 out << "Player name: " << s.playername << "\t Points: " << s.currScore << std::endl;
