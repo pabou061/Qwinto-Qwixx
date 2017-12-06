@@ -11,6 +11,8 @@ public:
 	operator int() const;
 	RollOfDice pair(Dice d1, Dice d2);
 	friend std::ostream& operator<<(std::ostream& out, RollOfDice const& obj);
+	
+	//those 4 next functions allow the range-based loops
 	inline std::vector<Dice>::iterator begin() {
 		return d.begin();
 	}

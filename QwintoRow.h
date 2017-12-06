@@ -6,7 +6,7 @@
 template <Colour C> class QwintoRow {
 public:
 	
-	int rScore[10];
+	int rScore[10]; //only need 10 colums we treat the spacing later
 	inline int& operator[] (int x) {
 		return rScore[x];
 	}

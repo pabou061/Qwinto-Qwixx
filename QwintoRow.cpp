@@ -49,7 +49,7 @@ std::ostream& operator<<(std::ostream& out, QwintoRow<RED> qRow)
 	{
 			out << "Red" << "             ";
 			for (int i = 0; i < 11; i++) {
-				switch (i) {
+				switch (i) { //depending on where we are we might need a special character like % for the bonus. It places what goes before its slot.
 				case 0:
 					out << "|";
 					break;
@@ -72,7 +72,8 @@ std::ostream& operator<<(std::ostream& out, QwintoRow<RED> qRow)
 					out << "|";
 					break;
 				}
-				if (i != 3 && i != 10) {
+				if (i != 3 && i != 10) { //10 is out of bound but we sitll need to do some treatment on it. and 3 is the XX place so we don't need to place anything in it.
+					//the next block checks if the number has 1 or 2 digits and treats it accordingly
 					if (qRow.rScore[i] > 9) { out << qRow.rScore[i]; }
 					else if (qRow.rScore[i] < 10 && qRow.rScore[i] != 0) { out << " " << qRow.rScore[i]; }
 					else { out << "  "; }
