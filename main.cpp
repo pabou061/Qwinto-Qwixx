@@ -68,6 +68,15 @@ int main() {
 		for (size_t i = 0; i < nbPlayers; i++)
 		{
 			QwixxScoreSheet q(namePlayers.at(i));
+			
+/*	TESTING PART - uncomment to add values
+			for (size_t i = 0; i < 5; i++)
+			{
+				q.y.rScore[i] = i;
+				q.r.rScore[i] = i;
+
+			}
+*/
 			xPlayer.push_back(QwixxPlayer(namePlayers.at(i), q));
 		}
 
@@ -150,6 +159,15 @@ int main() {
 		for (size_t i = 0; i < nbPlayers; i++)
 		{
 			QwintoScoreSheet q(namePlayers.at(i));
+/*	TESTING PART - uncomment to add values
+			for (size_t i = 0; i < 9; i++)
+			{
+			q.y[i] = i;
+			q.r[i] = i;
+			q.b[i] = i;
+
+			}
+*/
 			oPlayer.push_back(QwintoPlayer(namePlayers.at(i), q));
 		}
 
