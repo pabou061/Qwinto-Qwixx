@@ -72,8 +72,8 @@ int main() {
 /*	TESTING PART - uncomment to add values
 			for (size_t i = 0; i < 5; i++)
 			{
-				q.y.rScore[i] = i;
-				q.r.rScore[i] = i;
+				q.y.rScore[i] = 1;
+				q.r.rScore[i] = 1;
 
 			}
 */
@@ -162,9 +162,9 @@ int main() {
 /*	TESTING PART - uncomment to add values
 			for (size_t i = 0; i < 9; i++)
 			{
-			q.y[i] = i;
-			q.r[i] = i;
-			q.b[i] = i;
+			q.y[i] = 1;
+			q.r[i] = 1;
+			q.b[i] = 1;
 
 			}
 */
